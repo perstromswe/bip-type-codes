@@ -26,7 +26,11 @@ process.on('uncaughtException', function (error) {
 });
 
 function routesSetup(server) {
-  server.get('/bip/api/schema', api.allCategories);
+  server.get('/bip/api/allCategories', api.allCategories);
+
+  server.get('/bip/api/schema', api.schema);
+  server.get('/bip/api/maincategory', api.maincategory);
+  server.get('/bip/api/subcategory', api.subcategory);
   server.get('*', api.notFound);
 }
 

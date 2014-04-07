@@ -1,0 +1,182 @@
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="bs-callout bs-callout-warning showMobile">
+      <h4>Mobilt läge</h4>
+      <p>Detta är en nedbantad version för mobilt bruk. Använd en enhet med större skärm för tillgång till den fulla versionen</p>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Filter</div>
+      <div class="panel-body">
+
+        <form role="form">
+          <div class="form-group">
+            <label for="discipline">Disciplin</label>
+            <select id="discipline" class="form-control" ng-model="activeSchema" ng-change="schemaChangeFN()" ng-options="s.sch_title for s in schemas"></select>
+          </div>
+          <div class="form-group">
+            <label for="mainCategory">Huvudkategori</label>
+            <select class="form-control" id="mainCategory" ng-disabled="!filter.schema" ng-change="mainCatChangeFN()" ng-model="activeMainCategory" ng-options="m.mc_title for m in mainCategories | mainCatFilter:activeSchema.sch_id" ></select>
+          </div>
+          <div class="form-group">
+            <label for="subCategory">Underkategori</label>
+            <select class="form-control" id="subCategory" ng-disabled="!filter.mainCategory" ng-model="activeSubCategory" ng-options="s.sc_title for s in subCategories | subCatFilter:activeMainCategory.mc_id"></select>
+          </div>
+          <div class="form-group" ng-show="subCategoryActive">
+            <label for="userCode">Beteckning:</label>
+            <p id="userCode">{{activeSubCategory.sc_usercode_syntax}}xx</p>
+          </div>
+        </form>
+        <button class="btn btn-block btn-default" ng-click="resetFilterFN()">Återställ</button>
+      </div>
+    </div>
+
+    <div class="panel panel-primary hideMobile">
+      <div class="panel-heading">Förklaring</div>
+      <div class="panel-body">
+        <h4 class="page-header">Syntax</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>Beteckning</p>
+          </div>
+          <div class="col-sm-6">
+            <label>ZZYxx</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label>ZZ</label>
+          </div>
+          <div class="col-sm-6">
+            <p>Huvudkategori</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label>Y</label>
+          </div>
+          <div class="col-sm-6">
+            <p>Underkategori</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label>xx</label>
+          </div>
+          <div class="col-sm-6">
+            <p>Löpnummer</p>
+          </div>
+        </div>
+
+        <h4 class="page-header">Exempel</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>Beteckning</p>
+          </div>
+          <div class="col-sm-6">
+            <label>TD101</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label>TD</label>
+          </div>
+          <div class="col-sm-6">
+            <p>Tilluftsdon</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label>1</label>
+          </div>
+          <div class="col-sm-6">
+            <p>Tilluftsdon mont. i vägg</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label>01</label>
+          </div>
+          <div class="col-sm-6">
+            <p>Nr 1 i serie</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-9 hideMobile">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Beteckningar</div>
+      <div class="panel-body">
+        <input class="form-control" placeholder="Sök" ng-model="search">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>
+              Disciplin
+                <br>
+                <a class="btn btn-default btn-sm" ng-click="orderBy('sch_title', false)" ng-class="{orderActive: isOrderActive('sch_title', false)}">
+                  <i class="fa fa-sort-desc"></i></button>
+                </a>
+                <a class="btn btn-default btn-sm" ng-click="orderBy('sch_title', true)" ng-class="{orderActive: isOrderActive('sch_title', true)}">
+                  <i class="fa fa-sort-asc"></i></button>
+                </a>
+            </th>
+            <th>
+              Huvudkategori
+              <br>
+              <a class="btn btn-default btn-sm" ng-click="orderBy('mc_title', false)" ng-class="{orderActive: isOrderActive('mc_title', false)}">
+                <i class="fa fa-sort-desc"></i></button>
+              </a>
+              <a class="btn btn-default btn-sm" ng-click="orderBy('mc_title', true)" ng-class="{orderActive: isOrderActive('mc_title', true)}">
+                <i class="fa fa-sort-asc"></i></button>
+              </a>
+            </th>
+            <th>
+              Underkategori
+              <br>
+              <a class="btn btn-default btn-sm" ng-click="orderBy('sc_title', false)" ng-class="{orderActive: isOrderActive('sc_title', false)}">
+                <i class="fa fa-sort-desc"></i></button>
+              </a>
+              <a class="btn btn-default btn-sm" ng-click="orderBy('sc_title', true)" ng-class="{orderActive: isOrderActive('sc_title', true)}">
+                <i class="fa fa-sort-asc"></i></button>
+              </a>
+            </th>
+            <th>
+              Beteckning
+              <br>
+              <a class="btn btn-default btn-sm" ng-click="orderBy('sc_usercode_syntax', false)" ng-class="{orderActive: isOrderActive('sc_usercode_syntax', false)}">
+                <i class="fa fa-sort-desc"></i></button>
+              </a>
+              <a class="btn btn-default btn-sm" ng-click="orderBy('sc_usercode_syntax', true)" ng-class="{orderActive: isOrderActive('sc_usercode_syntax', true)}">
+                <i class="fa fa-sort-asc"></i></button>
+              </a>
+            </th>
+            <th>
+              AMA-kod
+              <br>
+              <a class="btn btn-default btn-sm" ng-click="orderBy('mc_code', false)" ng-class="{orderActive: isOrderActive('mc_code', false)}">
+                <i class="fa fa-sort-desc"></i></button>
+              </a>
+              <a class="btn btn-default btn-sm" ng-click="orderBy('mc_code', true)" ng-class="{orderActive: isOrderActive('mc_code', true)}">
+                <i class="fa fa-sort-asc"></i></button>
+              </a>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="category in allCategories | codesFilter:activeSchema:activeMainCategory:activeSubCategory:activeSort | filter:search">
+            <td>{{category.sch_title}} </td>
+            <td>{{category.mc_title}}</td>
+            <td>{{category.sc_title}}</td>
+            <td class="greenFont">{{category.sc_usercode_syntax}}xx</td>
+            <td>{{category.mc_code}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

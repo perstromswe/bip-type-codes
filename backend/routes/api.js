@@ -30,14 +30,64 @@ exports.notFound = function (req, res) {
 };
 
 
-/**Project calls**/
 /*
- GET /api/project/ HTTP/1.1
+ GET /bip/api/allCodes HTTP/1.1
  */
 exports.allCategories = function (inputs, callback) {
   var query = knex('subcategory')
     .join('maincategory', 'subcategory.sc_maincategory', '=', 'maincategory.mc_id')
     .join('schema', 'maincategory.mc_schema', '=', 'schema.sch_id')
+    .select();
+
+  query.exec(function (err, results) {
+    if (err) {
+      sendResponse(callback, err, 404);
+      return console.error('error running query', err);
+    }
+    sendResponse(callback, results);
+  });
+};
+
+/*
+ GET /bip/api/schema HTTP/1.1
+ */
+exports.schema = function (inputs, callback) {
+  var query = knex('schema')
+    .orderBy('sch_title', 'asc')
+    .select();
+
+  query.exec(function (err, results) {
+    if (err) {
+      sendResponse(callback, err, 404);
+      return console.error('error running query', err);
+    }
+    sendResponse(callback, results);
+  });
+};
+
+/*
+ GET /bip/api/maincategory HTTP/1.1
+ */
+exports.maincategory = function (inputs, callback) {
+  var query = knex('maincategory')
+    .orderBy('mc_title', 'asc')
+    .select();
+
+  query.exec(function (err, results) {
+    if (err) {
+      sendResponse(callback, err, 404);
+      return console.error('error running query', err);
+    }
+    sendResponse(callback, results);
+  });
+};
+
+/*
+ GET /bip/api/subcategory HTTP/1.1
+ */
+exports.subcategory = function (inputs, callback) {
+  var query = knex('subcategory')
+    .orderBy('sc_title', 'asc')
     .select();
 
   query.exec(function (err, results) {
