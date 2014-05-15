@@ -29,7 +29,6 @@ exports.notFound = function (req, res) {
   res.status(404).end();
 };
 
-
 /*
  GET /bip/api/allCodes HTTP/1.1
  */

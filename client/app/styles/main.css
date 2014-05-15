@@ -1,4 +1,11 @@
 /* Space out content a bit */
+.body{
+	height:100%;
+}
+
+.html{
+	height:100%;
+}
 
 .mainContent {
 	padding-left: 20px;
@@ -65,4 +72,19 @@
 	.hideMobile {
 		display: block;
 	}
+}
+
+.filterList{
+	margin:0;
+}
+
+li{
+	cursor:pointer;
+}
+
+.list{
+	height:95%;
+	overflow:hidden;
+	overflow-x: auto;
+	overflow-y: auto;
 }

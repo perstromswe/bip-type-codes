@@ -8,21 +8,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/#/typecodes">BIP - Typkoder</a>
+      <a class="navbar-brand" href="#/typecodes">BIP - Type ID</a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/#/typecodes">App</a></li>
-        <li><a href="#about">Om</a></li>
-        <li><a href="#contact">Kontakt</a></li>
+        <li ng-class="{active:isActive('app')}"><a ng-href=#/app">App</a></li>
+        <li ng-class="{active:isActive('about')}"><a href="#/about">Om</a></li>
+        <li ng-class="{active:isActive('contact')}"><a href="#/contact">Kontakt</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>
 
-
-<div class="container-fluid">
-  <div class="mainContent">
-    <div ui-view></div>
+<div class="container-fluid" style="height:100%;">
+  <div class="mainContent" style="height:100%;">
+    <div ui-view style="height:100%;"></div>
   </div>
 </div>

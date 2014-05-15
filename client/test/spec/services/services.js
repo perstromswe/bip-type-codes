@@ -1,3 +1,5 @@
+/*
+
 'use strict';
 
 describe('Service: services', function () {
@@ -11,8 +13,10 @@ describe('Service: services', function () {
     services = _services_;
   }));
 
-  it('should do something', function () {
-    expect(!!services).toBe(true);
-  });
+  //it('should do something', function () {
+  //  expect(!!services).toBe(true);
+  //});
 
 });
+
+*/

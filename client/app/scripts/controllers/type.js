@@ -15,7 +15,6 @@ angular.module('clientApp')
     $scope.subCategories = _.toArray(subcategories);
     $scope.subCategories.unshift({sc_title:'Alla'});
     $scope.activeSubCategory = $scope.subCategories[0];
-    console.log($scope.subCategories);
 
     $scope.schemaChangeFN = function(){
       $scope.activeMainCategory = $scope.mainCategories[0];
@@ -37,8 +36,11 @@ angular.module('clientApp')
       reverse: false
     };
 
-    $scope.orderBy = function(property, reverse){
-      $scope.activeSort = {property: property, reverse:reverse};
+    $scope.orderBy = function(property){
+      $scope.activeSort = {
+        property: property,
+        reverse:!$scope.activeSort.reverse
+      };
     };
 
     $scope.isOrderActive = function(property, reverse){

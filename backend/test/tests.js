@@ -13,13 +13,20 @@ describe('Routing -->', function () {
 
   var url = 'http://localhost:3002';
 
-  describe('Project', function () {
+  describe('Schema routing', function () {
     it('should return 200 OK on GET /bip/api/schema', function (done) {
       request(url).get('/bip/api/schema').end(function (err, res) {
         should.not.exist(err);
         res.should.have.status('200');
         done();
       });
+    });
+  });
+
+  describe('Property routing', function(){
+    it('should return 200 OK on GET /bip/api/properties', function(done){
+      request(url).get('/bip/api/properties')
+        .expect(200, done);
     });
   })
 });

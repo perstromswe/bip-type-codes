@@ -10,17 +10,18 @@ angular.module('clientApp', [
   .config(function ($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/app');
     //
     // Now set up the states
     $stateProvider
       .state('home', {
         url: '/',
+        abstract:true,
         templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
       .state('home.types', {
-        url: 'typecodes',
+        url: 'app',
         templateUrl: 'views/typecodes.html',
         resolve: {
           allCategories: ['MultiCodesLoader', function (MultiCodesLoader) {
