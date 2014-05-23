@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 describe('Filter: checkMark', function () {
 
   // load the filter's module
@@ -17,3 +17,4 @@ describe('Filter: checkMark', function () {
   });
 
 });
+*/

@@ -90,10 +90,9 @@ li{
 
 .bs-docs-masthead, .bs-docs-header {
 	position: relative;
-
 	padding: 55px 15px;
 	height:500px;
-	color: #ffffff;
+	color:#ffffff;
 	text-align: center;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 	background-color: #325b8a;
@@ -169,11 +168,16 @@ li{
 }
 
 .short-info{
-	padding-top: 0px;
-	padding-bottom:50px;
-	height:130px;
+	padding: 5px 15px;
+	height:140px;
 	text-align: left;
 }
+
+.short-info p{
+	font-size: 24px;
+	color: #d2ddff;
+}
+
 .bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav>li>a {
 	color: #325b8a;
 	font-weight: 500;
@@ -184,6 +188,17 @@ li{
 	font-weight: 500;
 }
 
+.container-fluid{
+	padding:0;
+	margin:0;
+}
 
+.bs-docs-header p {
+	margin-bottom: 0;
+	font-weight: 300;
+	line-height: 1.4;
+}
 
-
+.main-table{
+	height:85%;
+}
