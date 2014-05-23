@@ -25,7 +25,7 @@ describe('Routing -->', function () {
 
   describe('Property routing', function(){
     it('should return 200 OK on GET /bip/api/properties', function(done){
-      request(url).get('/bip/api/properties')
+      request(url).get('/bip/api/property')
         .expect(200, done);
     });
   })

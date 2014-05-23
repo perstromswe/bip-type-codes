@@ -1,19 +1,6 @@
 'use strict';
 
 angular.module('clientApp')
-  .factory('services', function () {
-    // Service logic
-    // ...
-
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  })
   .factory('Code', function($resource) {
       return $resource('/bip/api/allCategories');
     })
@@ -73,4 +60,20 @@ angular.module('clientApp')
         return delay.promise;
       };
     }
-  );
+  )
+  .factory('Property', function($resource) {
+    return $resource('/bip/api/property');
+  })
+  .factory('MultiPropertiesLoader', function (Property, $q) {
+    return function () {
+      var delay = $q.defer();
+      Property.query(function (Property) {
+        delay.resolve(Property);
+      }, function () {
+        delay.reject('Unable to fetch properties');
+      });
+      return delay.promise;
+    };
+  }
+);
+

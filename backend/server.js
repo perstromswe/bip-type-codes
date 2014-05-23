@@ -31,6 +31,7 @@ function routesSetup(server) {
   server.get('/bip/api/schema', api.schema);
   server.get('/bip/api/maincategory', api.maincategory);
   server.get('/bip/api/subcategory', api.subcategory);
+  server.get('/bip/api/property', api.property);
   server.get('*', api.notFound);
 }
 

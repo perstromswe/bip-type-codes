@@ -4,24 +4,36 @@ angular.module('clientApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ui.router',
+  'ui.router'
   //'clientApp.services'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise('/app');
+    $urlRouterProvider.otherwise('/');
     //
     // Now set up the states
     $stateProvider
       .state('home', {
         url: '/',
-        abstract:true,
-        templateUrl: 'views/home.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/about.html'
       })
-      .state('home.types', {
-        url: 'app',
+      .state('info', {
+        url: '/info',
+        templateUrl: 'views/docs.html'
+      })
+      .state('properties', {
+        url: '/egenskaper',
+        resolve: {
+          properties: ['MultiPropertiesLoader', function (MultiPropertiesLoader) {
+            return new MultiPropertiesLoader();
+          }]
+        },
+        templateUrl: 'views/properties.html',
+        controller: 'PropertyCtrl'
+      })
+      .state('types', {
+        url: '/beteckningar',
         templateUrl: 'views/typecodes.html',
         resolve: {
           allCategories: ['MultiCodesLoader', function (MultiCodesLoader) {
@@ -39,12 +51,8 @@ angular.module('clientApp', [
         },
         controller: 'TypeCtrl'
       })
-      .state('home.about', {
-        url: 'about',
-        templateUrl: 'views/about.html'
-      })
-      .state('home.contact', {
-        url: 'contact',
+      .state('contact', {
+        url: '/kontakt',
         templateUrl: 'views/contact.html'
       });
   });

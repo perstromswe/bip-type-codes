@@ -8,8 +8,7 @@
 }
 
 .mainContent {
-	padding-left: 20px;
-	padding-right: 20px;
+
 }
 
 .bs-callout {
@@ -88,3 +87,103 @@ li{
 	overflow-x: auto;
 	overflow-y: auto;
 }
+
+.bs-docs-masthead, .bs-docs-header {
+	position: relative;
+
+	padding: 55px 15px;
+	height:500px;
+	color: #ffffff;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+	background-color: #325b8a;
+	background-image: -webkit-linear-gradient(top, #325b8a 0, #3b79b1 100%);
+	background-image: linear-gradient(to bottom, #325b8a 0,#3b79b1 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#325b8a', endColorstr='#3b79b1', GradientType=0);
+}
+
+.bs-docs-masthead .bs-docs-booticon {
+	margin: 0 auto 30px;
+}
+.bs-docs-booticon-outline {
+	background-color: rgba(0, 0, 0, 0);
+	border: 1px solid white;
+}
+.bs-docs-booticon-lg {
+	width: 196px;
+	height: 144px;
+	font-size: 108px;
+	line-height: 140px;
+}
+.bs-docs-booticon {
+	display: block;
+	font-weight: 500;
+	color: #FFF;
+	border-radius: 15%;
+	cursor: default;
+	text-align: center;
+}
+
+.btn-outline {
+	color: #325b8a;
+	padding-top:15px;
+	background-color: rgba(0, 0, 0, 0);
+	border-color: #563D7C;
+}
+
+.btn-outline-inverse {
+	color: #FFF;
+	margin-top: 10px;
+	background-color: rgba(0, 0, 0, 0);
+	border-color: #ffffff;
+}
+
+.btn-outline-inverse:hover {
+	color: #325b8a;
+	background-color: #ffffff;
+	border-color: #ffffff;
+}
+
+.navbar.navbar-default.navbar-static-top.ng-scope {
+	margin: 0px;
+}
+
+.row{
+	padding-left:20px;
+	padding-right:20px;
+	padding-top: 20px;
+}
+
+.version{
+	color: rgba(255,255,255,.5);
+}
+
+.suggestions{
+	padding: 15px 0;
+	text-align: left;
+	padding-left:35px;
+	background-color: #F5F5F5;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #DDD;
+}
+
+.short-info{
+	padding-top: 0px;
+	padding-bottom:50px;
+	height:130px;
+	text-align: left;
+}
+.bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav>li>a {
+	color: #325b8a;
+	font-weight: 500;
+}
+
+#navbar-title {
+	color: #325b8a;
+	font-weight: 500;
+}
+
+
+
+
