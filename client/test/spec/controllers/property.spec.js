@@ -17,7 +17,4 @@ describe('Controller: PropertyCtrl', function () {
     });
   }));
 
-  it('should attach a list with properties to the scope', function () {
-    expect(scope.properties.length).toBe(3);
-  });
 });

@@ -30,24 +30,6 @@ exports.notFound = function (req, res) {
 };
 
 /*
- GET /bip/api/allCodes HTTP/1.1
- */
-exports.allCategories = function (inputs, callback) {
-  var query = knex('subcategory')
-    .join('maincategory', 'subcategory.sc_maincategory', '=', 'maincategory.mc_id')
-    .join('schema', 'maincategory.mc_schema', '=', 'schema.sch_id')
-    .select();
-
-  query.exec(function (err, results) {
-    if (err) {
-      sendResponse(callback, err, 404);
-      return console.error('error running query', err);
-    }
-    sendResponse(callback, results);
-  });
-};
-
-/*
  GET /bip/api/schema HTTP/1.1
  */
 exports.schema = function (inputs, res) {

@@ -3,8 +3,10 @@
 angular.module('clientApp', [
   'ngCookies',
   'ngResource',
+  'ngAnimate',
   'ngSanitize',
-  'ui.router'
+  'ui.router',
+  'ui.bootstrap'
   //'clientApp.services'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -23,7 +25,8 @@ angular.module('clientApp', [
         templateUrl: 'views/docs.html'
       })
       .state('properties', {
-        url: '/egenskaper',
+        url: '/egenskaper/',
+        abstract:true,
         resolve: {
           properties: ['MultiPropertiesLoader', function (MultiPropertiesLoader) {
             return new MultiPropertiesLoader();
@@ -32,13 +35,21 @@ angular.module('clientApp', [
         templateUrl: 'views/properties.html',
         controller: 'PropertyCtrl'
       })
+      .state('properties.app', {
+        url:'app',
+        templateUrl: 'views/properties-app.html',
+        controller: 'PropertyCtrl'
+      })
+      .state('properties.docs', {
+        url:'instruktioner',
+        templateUrl: 'views/properties-docs.html',
+        controller: 'PropertyCtrl'
+
+      })
       .state('types', {
         url: '/beteckningar',
         templateUrl: 'views/typecodes.html',
         resolve: {
-          allCategories: ['MultiCodesLoader', function (MultiCodesLoader) {
-            return new MultiCodesLoader();
-          }],
           schemas: ['MultiSchemaLoader', function (MultiSchemaLoader) {
             return new MultiSchemaLoader();
           }],

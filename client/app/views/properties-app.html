@@ -1,0 +1,162 @@
+
+<div class="row wrapper">
+
+  <div class="col-sm-12" style="height:95%;">
+
+    <div class="panel panel-default main-table">
+      <div class="panel-heading">Egenskaper</div>
+      <div class="panel-body list">
+        <input class="form-control" placeholder="Sök" ng-model="search">
+
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th class="col-sm-2">
+              <ul class="list-inline">
+                <li>
+                  <a ng-click="sort = 'prop_title'; reverse=!reverse">Egenskap (property)</a>
+                </li>
+                <li>
+                  <div>
+                    <ul class="list-unstyled filterList">
+                      <li>
+                          <i  ng-class="{'fa-sort-desc': isOrderActive('prop_title', false), 'fa-sort-asc': isOrderActive('prop_title', true)}" class="orderActive fa"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </th>
+            <th class="col-sm-3">
+              <ul class="list-inline">
+                <li>
+                  <a ng-click="sort = 'prop_comment'; reverse=!reverse">Förklaring</a>
+                </li>
+                <li>
+                  <div>
+                    <ul class="list-unstyled filterList">
+                      <li>
+                        <i ng-class="{'fa-sort-desc orderActive': isOrderActive('prop_comment', false), 'fa-sort-asc': isOrderActive('prop_comment', true)}" class="orderActive fa"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </th>
+            <th class="col-sm-3">
+              <ul class="list-inline">
+                <li>
+                  <a ng-click="sort = 'prop_example'; reverse=!reverse">Exempel</a>
+                </li>
+                <li>
+                  <div>
+                    <ul class="list-unstyled filterList">
+                      <li>
+                        <i ng-class="{'fa-sort-desc orderActive': isOrderActive('prop_example', false), 'fa-sort-asc': isOrderActive('prop_example', true)}" class="orderActive fa"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </th>
+            <th>
+              <ul class="list-inline">
+                <li>
+                  <a ng-click="sort = 'prop_architect'; reverse=!reverse">A</a>
+                </li>
+                <li>
+                  <div>
+                    <ul class="list-unstyled filterList">
+                      <li>
+                        <i ng-class="{'fa-sort-desc': isOrderActive('prop_architect', false), 'fa-sort-asc': isOrderActive('prop_architect', true)}" class="orderActive fa"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </th>
+            <th>
+              <ul class="list-inline">
+                <li>
+                  <a ng-click="sort = 'prop_construct'; reverse=!reverse">K</a>
+                </li>
+                <li>
+                  <div>
+                    <ul class="list-unstyled filterList">
+                      <li>
+                        <i ng-class="{'fa-sort-desc': isOrderActive('prop_construct', false), 'fa-sort-asc': isOrderActive('prop_construct', true)}" class="orderActive fa"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </th>
+            <th>
+              <ul class="list-inline">
+                <li>
+                  <a ng-click="sort = 'prop_electricty'; reverse=!reverse">E</a>
+                </li>
+                <li>
+                  <div>
+                    <ul class="list-unstyled filterList">
+                      <li>
+                        <i ng-class="{'fa-sort-desc': isOrderActive('prop_electricty', false), 'fa-sort-asc': isOrderActive('prop_electricty', true)}" class="orderActive fa"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </th>
+            <th>
+              <ul class="list-inline">
+                <li>
+                  <a ng-click="sort = 'prop_mep'; reverse=!reverse">V</a>
+                </li>
+                <li>
+                  <div>
+                    <ul class="list-unstyled filterList">
+                      <li>
+                        <i ng-class="{'fa-sort-desc': isOrderActive('prop_mep', false), 'fa-sort-asc': isOrderActive('prop_mep', true)}" class="orderActive fa"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </th>
+            <th class="col-sm-2">
+              <ul class="list-inline">
+                <li>
+                  <a ng-click="sort = 'prop_datatype'; reverse=!reverse">Typ</a>
+                </li>
+                <li>
+                  <div>
+                    <ul class="list-unstyled filterList">
+                      <li>
+                        <a ng-click="orderBy('prop_datatype')">
+                          <i ng-class="{'fa-sort-desc': isOrderActive('prop_datatype', false), 'fa-sort-asc': isOrderActive('prop_datatype', true)}" class="orderActive fa"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="property in properties | orderBy:sort:reverse | filter:search">
+            <td>{{property.prop_title}} </td>
+            <td>{{property.prop_comment}}</td>
+            <td>{{property.prop_example}}</td>
+            <td><i class="fa fa-check" ng-show="property.prop_architect"></i></td>
+            <td><i class="fa fa-check" ng-show="property.prop_construct"></i></td>
+            <td><i class="fa fa-check" ng-show="property.prop_electricity"></i></td>
+            <td><i class="fa fa-check" ng-show="property.prop_mep"></i></td>
+            <td>{{property.prop_datatype}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,27 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('TypeCtrl', function ($scope, allCategories, schemas, maincategories, subcategories) {
+  .controller('TypeCtrl', function ($scope, schemas, maincategories, subcategories) {
+
+    //Join the subcategories with schemas and maincategories
+    var allCategories = [];
+    angular.forEach(subcategories, function (subcategory) {
+        var mainCategory = _.findWhere(maincategories, {mc_id:subcategory.sc_maincategory});
+        var discipline  = _.findWhere(schemas, {sch_id:mainCategory.mc_schema});
+        this.push({
+          sc_title: subcategory.sc_title,
+          sc_usercode_syntax: subcategory.sc_usercode_syntax,
+          mc_title: mainCategory.mc_title,
+          sch_title: discipline.sch_title,
+          sc_code: subcategory.sc_code,
+          sch_id:discipline.sch_id,
+          mc_id: mainCategory.mc_id,
+          sc_id : subcategory.sc_id
+        });
+      }, allCategories);
+
     $scope.allCategories = allCategories;
+
 
     $scope.schemas = _.toArray(schemas);
     $scope.schemas.unshift({sch_title:'Alla'});
